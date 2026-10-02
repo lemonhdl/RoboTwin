@@ -4,6 +4,7 @@ Private mesh/poses are used only to build the scene. Operation remains through
 public Auto RGB-D/EE observations. The product is one persistent rigid actor.
 """
 import json
+from copy import deepcopy
 from pathlib import Path
 
 import sapien
@@ -25,6 +26,12 @@ class supermarket_checkout_counter(Base_Task):
         for side in ('left', 'right'):
             key = f'{side}_embodiment_config'
             kwargs[key] = dict(kwargs[key], homestate=self.layout['home'])
+        # Enable the reserved Franka front camera at its original asset parameters.
+        # Keep shared embodiment files and the caller's camera list untouched.
+        cameras = deepcopy(kwargs['left_embodiment_config']['static_camera_list'])
+        if not any(camera['name'] == 'front_camera' for camera in cameras):
+            cameras.append(deepcopy(self.layout['front_camera']))
+        kwargs['left_embodiment_config']['static_camera_list'] = cameras
         super()._init_task_env_(**kwargs)
 
     def _box(self, name, center, half_size, color):
