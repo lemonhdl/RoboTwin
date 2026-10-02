@@ -72,6 +72,8 @@ class supermarket_checkout_counter(Base_Task):
         return actor
 
     def load_actors(self):
+        self.zone_pads = [self._box(d['name'], d['center'], d['half_size'], d['color'])
+                          for d in self.layout['zone_pads']]
         pad = self.layout['scanner_pad']
         self.scanner_pad = self._box('scanner_pad', pad['center'], pad['half_size'], [.10,.12,.13])
         self.scale = self._asset(self.layout['scale'])
@@ -81,7 +83,16 @@ class supermarket_checkout_counter(Base_Task):
         self.scanner = self._asset(self.layout['scanner'])
         self.product = self._asset(self.layout['product'])
         self.object = self.product
-        self._attach_product_label()
+        self.product.set_name(self.layout['product']['instance_id'])
+        self._attach_product_label(self.product)
+        self.incoming_products = []
+        for stock in self.layout['incoming_products']:
+            descriptor = dict(self.layout['product'], **stock)
+            actor = self._asset(descriptor)
+            actor.set_name(descriptor['instance_id'])
+            self._attach_product_label(actor)
+            self.incoming_products.append(actor)
+        self.zone_signs = [self._asset(d) for d in self.layout['zone_signs']]
 
     def _create_scale_pan(self):
         scale = self.layout['scale']; pan = scale['pan']
@@ -96,9 +107,9 @@ class supermarket_checkout_counter(Base_Task):
         self.scale_pan = builder.build(name='checkout_scale_pan')
         # Collision only: the user's original textured plate supplies the visual.
 
-    def _attach_product_label(self):
+    def _attach_product_label(self, actor):
         label = self.layout['product']['label']
-        render = next(c for c in self.product.actor.get_components()
+        render = next(c for c in actor.actor.get_components()
                       if isinstance(c, sapien.render.RenderBodyComponent))
         cx, cy, cz = label['center']; hx, hy, hz = label['half_size']
         def add(center, half_size, rgb):

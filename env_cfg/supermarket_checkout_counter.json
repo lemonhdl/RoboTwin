@@ -1,26 +1,328 @@
 {
   "schema_version": "supermarket_checkout_layout_v1",
   "counter_style": "geometry_draft",
-  "counter": {"top_z": 0.74, "center_xy": [0.025, 0.0], "half_size_xy": [0.5, 0.35], "shelf_center_xy": [-0.61, 0.02], "shelf_half_size_xy": [0.135, 0.22]},
-  "home": [[-0.30, 0.20, 0.55, -2.20, 0.0, 2.55, 0.785398], [0.30, 0.20, -0.55, -2.20, 0.0, 2.55, 0.785398]],
+  "counter": {
+    "top_z": 0.74,
+    "center_xy": [
+      0,
+      0
+    ],
+    "half_size_xy": [
+      0.5,
+      0.35
+    ],
+    "shelf_center_xy": [
+      0.65,
+      0
+    ],
+    "shelf_half_size_xy": [
+      0.15,
+      0.22
+    ]
+  },
+  "home": [
+    [
+      -0.3,
+      0.2,
+      0.55,
+      -2.2,
+      0.0,
+      2.55,
+      0.785398
+    ],
+    [
+      0.3,
+      0.2,
+      -0.55,
+      -2.2,
+      0.0,
+      2.55,
+      0.785398
+    ]
+  ],
   "scale": {
-    "modelname": "908_supermarket_scale", "model_id": 0,
-    "pose": [-0.08, 0.15, 0.74], "quaternion_wxyz": [1, 0, 0, 0],
-    "is_static": true, "convex": false,
-    "collision_boxes": [[[0, 0, 0.052], [0.174, 0.147, 0.052]], [[0.004, 0.125, 0.213], [0.022, 0.018, 0.107]], [[0.002, 0.125, 0.376], [0.133, 0.033, 0.062]]],
-    "pan": {"center": [0.004, -0.023, 0.118], "half_size": [0.153, 0.112, 0.003]},
-    "width_m": 0.36, "dimensions_status": "engineering_assumption"
+    "modelname": "908_supermarket_scale",
+    "model_id": 0,
+    "pose": [
+      0.04,
+      0.14,
+      0.74
+    ],
+    "quaternion_wxyz": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "is_static": true,
+    "convex": false,
+    "collision_boxes": [
+      [
+        [
+          0,
+          0,
+          0.052
+        ],
+        [
+          0.174,
+          0.147,
+          0.052
+        ]
+      ],
+      [
+        [
+          0.004,
+          0.125,
+          0.213
+        ],
+        [
+          0.022,
+          0.018,
+          0.107
+        ]
+      ],
+      [
+        [
+          0.002,
+          0.125,
+          0.376
+        ],
+        [
+          0.133,
+          0.033,
+          0.062
+        ]
+      ]
+    ],
+    "pan": {
+      "center": [
+        0.004,
+        -0.023,
+        0.118
+      ],
+      "half_size": [
+        0.153,
+        0.112,
+        0.003
+      ]
+    },
+    "width_m": 0.36,
+    "dimensions_status": "engineering_assumption"
   },
-  "basket": {"modelname": "110_basket", "model_id": 0, "pose": [-0.61, 0.02, 0.742], "quaternion_wxyz": [0.7071067811865476, 0.7071067811865476, 0, 0], "is_static": true, "convex": false},
-  "scanner": {"modelname": "024_scanner", "model_id": 0, "pose": [0.23, -0.19, 0.752], "quaternion_wxyz": [0, 0, 0.7071067811865476, 0.7071067811865476], "is_static": false, "convex": true, "mass_kg": 0.10},
-  "scanner_pad": {"center": [0.23, -0.19, 0.743], "half_size": [0.095, 0.07, 0.003]},
+  "basket": {
+    "modelname": "110_basket",
+    "model_id": 0,
+    "pose": [
+      0.65,
+      0.02,
+      0.744
+    ],
+    "quaternion_wxyz": [
+      0.7071067811865476,
+      0.7071067811865476,
+      0,
+      0
+    ],
+    "is_static": true,
+    "convex": false
+  },
+  "scanner": {
+    "modelname": "024_scanner",
+    "model_id": 0,
+    "pose": [
+      0.32,
+      -0.2,
+      0.752
+    ],
+    "quaternion_wxyz": [
+      0,
+      0,
+      0.7071067811865476,
+      0.7071067811865476
+    ],
+    "is_static": false,
+    "convex": true,
+    "mass_kg": 0.1
+  },
+  "scanner_pad": {
+    "center": [
+      0.32,
+      -0.2,
+      0.743
+    ],
+    "half_size": [
+      0.095,
+      0.07,
+      0.003
+    ]
+  },
   "product": {
-    "instance_id": "checkout_item_0", "modelname": "112_tea-box", "model_id": 0,
-    "pose": [-0.25, -0.20, 0.742], "quaternion_wxyz": [0.7071067811865476, 0.7071067811865476, 0, 0],
-    "is_static": false, "convex": true, "mass_kg": 0.08,
-    "label": {"center": [0, 0.040, 0.0366], "half_size": [0.024, 0.014, 0.0002], "normal": [0, 0, 1], "mode": "simulated_label_not_decodable"}
+    "instance_id": "checkout_item_0",
+    "modelname": "112_tea-box",
+    "model_id": 0,
+    "pose": [
+      -0.33,
+      -0.2,
+      0.744
+    ],
+    "quaternion_wxyz": [
+      0.7071067811865476,
+      0.7071067811865476,
+      0,
+      0
+    ],
+    "is_static": false,
+    "convex": true,
+    "mass_kg": 0.08,
+    "label": {
+      "center": [
+        0,
+        0.04,
+        0.0366
+      ],
+      "half_size": [
+        0.024,
+        0.014,
+        0.0002
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "mode": "simulated_label_not_decodable"
+    }
   },
-  "zones": {"pick": [-0.25, -0.20], "scan": [-0.015, -0.12], "scan_height_m": 1.01, "weigh": [-0.076, 0.127], "basket": [-0.61, 0.02]},
-  "planned_thresholds": {"scan_distance_m": [0.025, 0.09], "scan_axis_tolerance_deg": 15, "scan_hold_s": 0.3, "weigh_hold_s": 1.0, "basket_hold_s": 1.0, "max_linear_speed_m_s": 0.015, "max_angular_speed_rad_s": 0.15},
-  "validation": {"seed": 0, "settle_steps": 240, "max_auto_commands": 150, "status": "unverified", "scanner_after_scan": "return_to_pad", "stage_evaluator": "pending"}
+  "zones": {
+    "pick": [
+      -0.33,
+      -0.2
+    ],
+    "scan": [
+      0.1,
+      -0.1
+    ],
+    "scan_height_m": 1.01,
+    "weigh": [
+      0.044,
+      0.117
+    ],
+    "basket": [
+      0.65,
+      0.02
+    ],
+    "flow": "left_incoming_center_weigh_right_outgoing"
+  },
+  "planned_thresholds": {
+    "scan_distance_m": [
+      0.025,
+      0.09
+    ],
+    "scan_axis_tolerance_deg": 15,
+    "scan_hold_s": 0.3,
+    "weigh_hold_s": 1.0,
+    "basket_hold_s": 1.0,
+    "max_linear_speed_m_s": 0.015,
+    "max_angular_speed_rad_s": 0.15
+  },
+  "validation": {
+    "seed": 0,
+    "settle_steps": 240,
+    "max_auto_commands": 150,
+    "status": "unverified",
+    "scanner_after_scan": "return_to_pad",
+    "stage_evaluator": "pending"
+  },
+  "incoming_products": [
+    {
+      "instance_id": "checkout_item_1",
+      "pose": [
+        -0.33,
+        0,
+        0.744
+      ]
+    },
+    {
+      "instance_id": "checkout_item_2",
+      "pose": [
+        -0.33,
+        0.2,
+        0.744
+      ]
+    }
+  ],
+  "zone_pads": [
+    {
+      "name": "incoming_zone",
+      "center": [
+        -0.33,
+        0,
+        0.741
+      ],
+      "half_size": [
+        0.155,
+        0.32,
+        0.001
+      ],
+      "color": [
+        0.32,
+        0.52,
+        0.66
+      ]
+    },
+    {
+      "name": "outgoing_zone",
+      "center": [
+        0.65,
+        0,
+        0.741
+      ],
+      "half_size": [
+        0.143,
+        0.207,
+        0.001
+      ],
+      "color": [
+        0.72,
+        0.53,
+        0.25
+      ]
+    }
+  ],
+  "zone_signs": [
+    {
+      "modelname": "909_checkout_incoming_sign",
+      "model_id": 0,
+      "pose": [
+        -0.33,
+        -0.353,
+        0.64
+      ],
+      "quaternion_wxyz": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "is_static": true,
+      "convex": true
+    },
+    {
+      "modelname": "910_checkout_outgoing_sign",
+      "model_id": 0,
+      "pose": [
+        0.65,
+        -0.223,
+        0.64
+      ],
+      "quaternion_wxyz": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "is_static": true,
+      "convex": true
+    }
+  ]
 }
