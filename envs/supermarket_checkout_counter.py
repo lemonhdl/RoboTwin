@@ -85,13 +85,14 @@ class supermarket_checkout_counter(Base_Task):
 
     def _create_scale_pan(self):
         scale = self.layout['scale']; pan = scale['pan']
-        p = [a+b for a,b in zip(scale['pose'], pan['center'])]
+        p = list(scale['pose'])
         p[2] += self.table_z_bias
+        pan_pose = sapien.Pose(p, scale['quaternion_wxyz']) * sapien.Pose(pan['center'])
         builder = self.scene.create_actor_builder()
         builder.set_physx_body_type('static')
         builder.add_box_collision(half_size=pan['half_size'],
                                   material=self.scene.default_physical_material)
-        builder.set_initial_pose(sapien.Pose(p, scale['quaternion_wxyz']))
+        builder.set_initial_pose(pan_pose)
         self.scale_pan = builder.build(name='checkout_scale_pan')
         # Collision only: the user's original textured plate supplies the visual.
 

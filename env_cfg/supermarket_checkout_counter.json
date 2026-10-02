@@ -8,7 +8,7 @@
     "pose": [-0.08, 0.15, 0.74], "quaternion_wxyz": [1, 0, 0, 0],
     "is_static": true, "convex": false,
     "collision_boxes": [[[0, 0, 0.052], [0.174, 0.147, 0.052]], [[0.004, 0.125, 0.213], [0.022, 0.018, 0.107]], [[0.002, 0.125, 0.376], [0.133, 0.033, 0.062]]],
-    "pan": {"center": [0.042, -0.024, 0.118], "half_size": [0.098, 0.10, 0.003]},
+    "pan": {"center": [0.004, -0.023, 0.118], "half_size": [0.153, 0.112, 0.003]},
     "width_m": 0.36, "dimensions_status": "engineering_assumption"
   },
   "basket": {"modelname": "110_basket", "model_id": 0, "pose": [-0.61, 0.02, 0.742], "quaternion_wxyz": [0.7071067811865476, 0.7071067811865476, 0, 0], "is_static": true, "convex": false},
@@ -20,7 +20,7 @@
     "is_static": false, "convex": true, "mass_kg": 0.08,
     "label": {"center": [0, 0.040, 0.0366], "half_size": [0.024, 0.014, 0.0002], "normal": [0, 0, 1], "mode": "simulated_label_not_decodable"}
   },
-  "zones": {"pick": [-0.25, -0.20], "scan": [-0.015, -0.12], "scan_height_m": 1.01, "weigh": [-0.038, 0.126], "basket": [-0.61, 0.02]},
+  "zones": {"pick": [-0.25, -0.20], "scan": [-0.015, -0.12], "scan_height_m": 1.01, "weigh": [-0.076, 0.127], "basket": [-0.61, 0.02]},
   "planned_thresholds": {"scan_distance_m": [0.025, 0.09], "scan_axis_tolerance_deg": 15, "scan_hold_s": 0.3, "weigh_hold_s": 1.0, "basket_hold_s": 1.0, "max_linear_speed_m_s": 0.015, "max_angular_speed_rad_s": 0.15},
   "validation": {"seed": 0, "settle_steps": 240, "max_auto_commands": 150, "status": "unverified", "scanner_after_scan": "return_to_pad", "stage_evaluator": "pending"}
 }
