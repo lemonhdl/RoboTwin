@@ -50,6 +50,17 @@ class supermarket_checkout_counter(Base_Task):
                                       [shx,shy,.025], [.82,.85,.84])
         self.shelf_body = self._box('basket_shelf_body', [sx,sy,(height-.05)/2],
                                     [shx-.015,shy-.025,(height-.05)/2], [.12,.28,.26])
+        # The mount top matches the fixed Franka base elevation; no robot relocation.
+        support = self.layout['robot_support']
+        mx, my = support['center_xy']; mhx, mhy = support['half_size_xy']
+        top = support['top_z']
+        self.robot_support = self._box('robot_mount_top', [mx,my,top-.02],
+                                       [mhx,mhy,.02], [.24,.28,.29])
+        for index, lx in enumerate(support['leg_centers_x']):
+            self._box(f'robot_mount_leg_{index}', [lx,my,(top-.04)/2],
+                      [.055,.10,(top-.04)/2], [.19,.23,.24])
+            self._box(f'robot_mount_foot_{index}', [lx,my,.02],
+                      [.12,.19,.02], [.19,.23,.24])
         self.wall = self._box('wall', [0,1.3,1.5], [3,.1,1.5], [.87,.9,.88])
 
     def _asset(self, descriptor):
@@ -61,7 +72,10 @@ class supermarket_checkout_counter(Base_Task):
             if not (root / relative).is_file():
                 raise FileNotFoundError(root / relative)
         extra = {}
+        if 'scale_multiplier' in descriptor:
+            extra['scale_multiplier'] = descriptor['scale_multiplier']
         if 'collision_boxes' in descriptor:
+            # Explicit collision boxes and pan dimensions are final scene meters.
             extra['collision_boxes'] = descriptor['collision_boxes']
         actor = create_actor(scene=self,
                              pose=sapien.Pose(descriptor['pose'], descriptor['quaternion_wxyz']),
