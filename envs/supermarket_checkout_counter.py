@@ -109,8 +109,9 @@ class supermarket_checkout_counter(Base_Task):
 
     def _attach_product_label(self, actor):
         label = self.layout['product']['label']
-        render = next(c for c in actor.actor.get_components()
-                      if isinstance(c, sapien.render.RenderBodyComponent))
+        # SAPIEN 3 requires all shapes to be built before body attachment.
+        # This component shares the product entity and therefore its rigid motion.
+        render = sapien.render.RenderBodyComponent()
         cx, cy, cz = label['center']; hx, hy, hz = label['half_size']
         def add(center, half_size, rgb):
             shape = sapien.render.RenderShapeBox(
@@ -123,6 +124,7 @@ class supermarket_checkout_counter(Base_Task):
             if bit == '1':
                 add([cx-hx*.84+index*(hx*1.68/26),cy,cz+hz*1.1],
                     [hx*.021,hy*.79,hz*.2], [.025,.025,.025])
+        actor.actor.add_component(render)
 
     def check_success(self):
         # Scene availability must never be reported as a completed checkout order.
