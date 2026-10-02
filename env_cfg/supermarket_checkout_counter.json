@@ -4,20 +4,20 @@
   "counter": {
     "top_z": 0.74,
     "center_xy": [
-      0,
-      0
+      -0.12,
+      -0.06
     ],
     "half_size_xy": [
-      0.5,
-      0.35
+      0.36,
+      0.31
     ],
     "shelf_center_xy": [
-      0.65,
-      0
+      0.405,
+      -0.12
     ],
     "shelf_half_size_xy": [
-      0.15,
-      0.22
+      0.165,
+      0.25
     ]
   },
   "home": [
@@ -44,8 +44,8 @@
     "modelname": "908_supermarket_scale",
     "model_id": 0,
     "pose": [
-      0.04,
-      0.14,
+      0,
+      -0.09,
       0.74
     ],
     "quaternion_wxyz": [
@@ -113,8 +113,8 @@
     "modelname": "110_basket",
     "model_id": 0,
     "pose": [
-      0.65,
-      0.02,
+      0.405,
+      -0.035,
       0.744
     ],
     "quaternion_wxyz": [
@@ -130,8 +130,8 @@
     "modelname": "024_scanner",
     "model_id": 0,
     "pose": [
-      0.32,
-      -0.2,
+      0.405,
+      -0.267,
       0.752
     ],
     "quaternion_wxyz": [
@@ -146,13 +146,13 @@
   },
   "scanner_pad": {
     "center": [
-      0.32,
-      -0.2,
+      0.405,
+      -0.267,
       0.743
     ],
     "half_size": [
-      0.095,
-      0.07,
+      0.065,
+      0.088,
       0.003
     ]
   },
@@ -162,7 +162,7 @@
     "model_id": 0,
     "pose": [
       -0.33,
-      -0.2,
+      -0.26,
       0.744
     ],
     "quaternion_wxyz": [
@@ -196,20 +196,20 @@
   "zones": {
     "pick": [
       -0.33,
-      -0.2
+      -0.26
     ],
     "scan": [
-      0.1,
-      -0.1
+      -0.06,
+      -0.27
     ],
-    "scan_height_m": 1.01,
+    "scan_height_m": 1.04,
     "weigh": [
-      0.044,
-      0.117
+      0.004,
+      -0.113
     ],
     "basket": [
-      0.65,
-      0.02
+      0.405,
+      -0.035
     ],
     "flow": "left_incoming_center_weigh_right_outgoing"
   },
@@ -238,7 +238,7 @@
       "instance_id": "checkout_item_1",
       "pose": [
         -0.33,
-        0,
+        -0.1,
         0.744
       ]
     },
@@ -246,7 +246,7 @@
       "instance_id": "checkout_item_2",
       "pose": [
         -0.33,
-        0.2,
+        0.06,
         0.744
       ]
     }
@@ -256,12 +256,12 @@
       "name": "incoming_zone",
       "center": [
         -0.33,
-        0,
+        -0.095,
         0.741
       ],
       "half_size": [
-        0.155,
-        0.32,
+        0.13,
+        0.225,
         0.001
       ],
       "color": [
@@ -273,13 +273,13 @@
     {
       "name": "outgoing_zone",
       "center": [
-        0.65,
-        0,
+        0.405,
+        -0.01,
         0.741
       ],
       "half_size": [
-        0.143,
-        0.207,
+        0.15,
+        0.13,
         0.001
       ],
       "color": [
@@ -295,7 +295,7 @@
       "model_id": 0,
       "pose": [
         -0.33,
-        -0.353,
+        -0.373,
         0.64
       ],
       "quaternion_wxyz": [
@@ -311,8 +311,8 @@
       "modelname": "910_checkout_outgoing_sign",
       "model_id": 0,
       "pose": [
-        0.65,
-        -0.223,
+        0.405,
+        -0.373,
         0.64
       ],
       "quaternion_wxyz": [
