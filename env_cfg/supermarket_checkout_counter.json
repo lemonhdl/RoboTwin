@@ -111,7 +111,7 @@
     "scale_multiplier": 0.8333333333333334
   },
   "basket": {
-    "modelname": "110_basket",
+    "modelname": "911_shopping_basket",
     "model_id": 0,
     "pose": [
       0.44,
@@ -119,13 +119,15 @@
       0.744
     ],
     "quaternion_wxyz": [
-      0.7071067811865476,
-      0.7071067811865476,
+      1,
+      0,
       0,
       0
     ],
     "is_static": true,
-    "convex": false
+    "convex": false,
+    "width_m": 0.3,
+    "dimensions_status": "engineering_assumption"
   },
   "scanner": {
     "modelname": "024_scanner",
@@ -244,7 +246,12 @@
         -0.1,
         0.744
       ],
-      "quaternion_wxyz": [0.7071067811865476, 0.7071067811865476, 0, 0],
+      "quaternion_wxyz": [
+        0.7071067811865476,
+        0.7071067811865476,
+        0,
+        0
+      ],
       "is_static": false,
       "convex": true,
       "mass_kg": 0.12,
@@ -259,10 +266,15 @@
         0.06,
         0.744
       ],
-      "quaternion_wxyz": [0.7071067811865476, 0.7071067811865476, 0, 0],
+      "quaternion_wxyz": [
+        0.7071067811865476,
+        0.7071067811865476,
+        0,
+        0
+      ],
       "is_static": false,
       "convex": true,
-      "mass_kg": 0.10,
+      "mass_kg": 0.1,
       "label": null
     }
   ],
