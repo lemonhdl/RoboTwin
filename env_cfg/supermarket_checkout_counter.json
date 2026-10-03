@@ -237,19 +237,33 @@
   "incoming_products": [
     {
       "instance_id": "checkout_item_1",
+      "modelname": "038_milk-box",
+      "model_id": 0,
       "pose": [
         -0.395,
         -0.1,
         0.744
-      ]
+      ],
+      "quaternion_wxyz": [0.7071067811865476, 0.7071067811865476, 0, 0],
+      "is_static": false,
+      "convex": true,
+      "mass_kg": 0.12,
+      "label": null
     },
     {
       "instance_id": "checkout_item_2",
+      "modelname": "071_can",
+      "model_id": 0,
       "pose": [
         -0.395,
         0.06,
         0.744
-      ]
+      ],
+      "quaternion_wxyz": [0.7071067811865476, 0.7071067811865476, 0, 0],
+      "is_static": false,
+      "convex": true,
+      "mass_kg": 0.10,
+      "label": null
     }
   ],
   "zone_pads": [

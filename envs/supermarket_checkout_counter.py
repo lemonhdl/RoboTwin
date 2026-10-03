@@ -105,13 +105,12 @@ class supermarket_checkout_counter(Base_Task):
         self.product = self._asset(self.layout['product'])
         self.object = self.product
         self.product.set_name(self.layout['product']['instance_id'])
-        self._attach_product_label(self.product)
+        self._attach_product_label(self.product, self.layout['product'])
         self.incoming_products = []
-        for stock in self.layout['incoming_products']:
-            descriptor = dict(self.layout['product'], **stock)
+        for descriptor in self.layout['incoming_products']:
             actor = self._asset(descriptor)
             actor.set_name(descriptor['instance_id'])
-            self._attach_product_label(actor)
+            self._attach_product_label(actor, descriptor)
             self.incoming_products.append(actor)
         self.zone_signs = [self._asset(d) for d in self.layout['zone_signs']]
 
@@ -128,8 +127,10 @@ class supermarket_checkout_counter(Base_Task):
         self.scale_pan = builder.build(name='checkout_scale_pan')
         # Collision only: the user's original textured plate supplies the visual.
 
-    def _attach_product_label(self, actor):
-        label = self.layout['product']['label']
+    def _attach_product_label(self, actor, descriptor):
+        label = descriptor.get('label')
+        if label is None:
+            return
         # SAPIEN 3 requires all shapes to be built before body attachment.
         # This component shares the product entity and therefore its rigid motion.
         render = sapien.render.RenderBodyComponent()
