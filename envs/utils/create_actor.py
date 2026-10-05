@@ -551,6 +551,11 @@ def create_actor(
     if not np.isfinite(collision_units_scale) or collision_units_scale <= 0:
         raise ValueError("collision_units_scale must be positive and finite")
     collision_scale = [value * collision_units_scale for value in scale]
+    collision_contact_offset = (model_data or {}).get("collision_contact_offset_m")
+    if collision_contact_offset is not None:
+        collision_contact_offset = float(collision_contact_offset)
+        if not np.isfinite(collision_contact_offset) or collision_contact_offset <= 0:
+            raise ValueError("collision_contact_offset_m must be positive and finite")
 
     builder = scene.create_actor_builder()
     if is_static:
@@ -575,6 +580,12 @@ def create_actor(
 
     builder.add_visual_from_file(filename=str(visual_file), scale=scale)
     mesh = builder.build(name=modelname)
+    if collision_contact_offset is not None:
+        for component in mesh.get_components():
+            if isinstance(component, (sapienp.PhysxRigidStaticComponent,
+                                      sapienp.PhysxRigidDynamicComponent)):
+                for shape in component.get_collision_shapes():
+                    shape.contact_offset = collision_contact_offset
     mesh.set_name(modelname)
     mesh.set_pose(pose)
     return Actor(mesh, model_data)
