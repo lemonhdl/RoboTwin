@@ -547,6 +547,11 @@ def create_actor(
     except:
         model_data = None
 
+    collision_units_scale = float((model_data or {}).get("collision_units_scale", 1.0))
+    if not np.isfinite(collision_units_scale) or collision_units_scale <= 0:
+        raise ValueError("collision_units_scale must be positive and finite")
+    collision_scale = [value * collision_units_scale for value in scale]
+
     builder = scene.create_actor_builder()
     if is_static:
         builder.set_physx_body_type("static")
@@ -561,11 +566,11 @@ def create_actor(
                 material=scene.default_physical_material,
             )
     elif convex == True:
-        builder.add_multiple_convex_collisions_from_file(filename=str(collision_file), scale=scale)
+        builder.add_multiple_convex_collisions_from_file(filename=str(collision_file), scale=collision_scale)
     else:
         builder.add_nonconvex_collision_from_file(
             filename=str(collision_file),
-            scale=scale,
+            scale=collision_scale,
         )
 
     builder.add_visual_from_file(filename=str(visual_file), scale=scale)
