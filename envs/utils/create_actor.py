@@ -510,8 +510,12 @@ def create_actor(
         model_id=0,
         collision_boxes=None,
 ) -> Actor:
+    # A scene may pin a complete versioned object bundle. Read this before
+    # preprocess unwraps the task into its SAPIEN scene. The default path and
+    # native multi-convex/nonconvex loader calls remain the same.
+    object_asset_root = getattr(scene, "object_asset_root", None)
     scene, pose = preprocess(scene, pose)
-    modeldir = Path("assets/objects") / modelname
+    modeldir = (Path(object_asset_root) if object_asset_root is not None else Path("assets/objects")) / modelname
 
     if model_id is None:
         json_file_path = modeldir / "model_data.json"

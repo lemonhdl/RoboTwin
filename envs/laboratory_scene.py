@@ -56,6 +56,27 @@ class laboratory_scene(Base_Task):
         )
 
     def load_actors(self):
+        # The successful Coke/restaurant Franka profile uses a 0.6 m base
+        # separation.  Keep the DexJoCo pedestal preview aligned to the two
+        # actual RoboTwin root poses; only the support asset is added here.
+        self.franka_pedestals = []
+        for arm_tag, entity in (("left", self.robot.left_entity),
+                                ("right", self.robot.right_entity)):
+            root_pose = entity.get_root_pose()
+            # create_actor() applies table_z_bias internally, while the robot
+            # root pose is already in world coordinates.
+            pedestal_pose = sapien.Pose(
+                [float(root_pose.p[0]), float(root_pose.p[1]),
+                 float(root_pose.p[2]) - float(self.table_z_bias)],
+                root_pose.q,
+            )
+            pedestal = create_actor(
+                self, pedestal_pose, "lab_franka_pedestal",
+                convex=False, is_static=True,
+            )
+            pedestal.set_name(f"lab_franka_pedestal_{arm_tag}")
+            self.franka_pedestals.append(pedestal)
+
         # RoboTwin create_actor poses are actor-root poses.  The converted GLBs
         # keep their semantic local Z origin, so placing every root at table_z
         # makes the visible mesh float.  These offsets are the verified local
@@ -129,8 +150,9 @@ class laboratory_scene(Base_Task):
         _loose(self.alcohol_lamp_cap, 0.01)
         self.conical_flask = create_actor(
             self, sapien.Pose([0.18, -0.20, flask_root]),
-            "lab_conical_flask", convex=False, is_static=True
+            "lab_conical_flask", convex=True, is_static=False
         )
+        _loose(self.conical_flask, 0.05)
 
     def play_once(self):
         # Task proposed by the independent Astra reviewer: pick the beaker and
