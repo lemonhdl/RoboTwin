@@ -556,6 +556,12 @@ def create_actor(
         collision_contact_offset = float(collision_contact_offset)
         if not np.isfinite(collision_contact_offset) or collision_contact_offset <= 0:
             raise ValueError("collision_contact_offset_m must be positive and finite")
+    solver_position_iterations = (model_data or {}).get("physics_solver_position_iterations")
+    if solver_position_iterations is not None:
+        if (isinstance(solver_position_iterations, bool)
+                or not isinstance(solver_position_iterations, int)
+                or solver_position_iterations <= 0):
+            raise ValueError("physics_solver_position_iterations must be a positive integer")
 
     builder = scene.create_actor_builder()
     if is_static:
@@ -580,12 +586,15 @@ def create_actor(
 
     builder.add_visual_from_file(filename=str(visual_file), scale=scale)
     mesh = builder.build(name=modelname)
-    if collision_contact_offset is not None:
+    if collision_contact_offset is not None or solver_position_iterations is not None:
         for component in mesh.get_components():
             if isinstance(component, (sapienp.PhysxRigidStaticComponent,
                                       sapienp.PhysxRigidDynamicComponent)):
-                for shape in component.get_collision_shapes():
-                    shape.contact_offset = collision_contact_offset
+                if collision_contact_offset is not None:
+                    for shape in component.get_collision_shapes():
+                        shape.contact_offset = collision_contact_offset
+                if solver_position_iterations is not None and not is_static:
+                    component.solver_position_iterations = solver_position_iterations
     mesh.set_name(modelname)
     mesh.set_pose(pose)
     return Actor(mesh, model_data)

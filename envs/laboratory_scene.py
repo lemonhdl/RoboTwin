@@ -85,9 +85,10 @@ class laboratory_scene(Base_Task):
         rack_root = table_top - 0.16
         # The lower shelf is the support surface.  The upper perforated
         # shelf is a guide; it should not carry the tube.  In the converted
-        # rack these surfaces are at local z~=0.184 m and z~=0.285 m, while
-        # the tube local bottom is z~=0.12 m.
-        tube_root = rack_root + 0.184 - 0.12
+        # rack the lower shelf top is local z~=0.18472 m, while the tube
+        # local bottom is z~=0.12 m. Start 0.28 mm above that measured support
+        # and let gravity seat the tube, avoiding the old 0.71 mm penetration.
+        tube_root = rack_root + 0.185 - 0.12
         balance_scale = 0.70
         stand_scale = 1.25
         balance_root = table_top - 0.10 * balance_scale
